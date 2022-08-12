@@ -6,7 +6,7 @@ Converts the FireFox bookmarks to Markdown. Filters are allowed in order to acce
 
 You need to lacate the FireFox bookmarks file, python3 and the python module [mozLz4-decompress](https://github.com/codingepaduli/mozLz4-decompress#mozlz4-decompress) to convert the bookmarks file to JSON.
 
-The location of the bookmark files is saved in the Firefox profile, which is saved in ````$HOME/.mozilla/firefox/profiles.ini``. This file specify the FireFox profile folder in the item ``Profile0 Path``. In the following, the profile folder will be referenced as ``$FF_PROFILE_ID``.
+The location of the bookmark files is saved in the Firefox profile, which is saved in ``$HOME/.mozilla/firefox/profiles.ini``. This file specify the FireFox profile folder in the item ``Profile0 Path``. In the following, the profile folder will be referenced as ``$FF_PROFILE_ID``.
 
 The Firefox bookmarks is saved in the file ``$HOME/.mozilla/firefox/$FF_PROFILE_ID.default[-esr]/bookmarkbackups/bookmarks-xyz...abc.jsonlz4``.
 
