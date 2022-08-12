@@ -1,0 +1,3 @@
+[submodule "mozLz4-decompress"]
+	path = mozLz4-decompress
+	url = https://github.com/codingepaduli/mozLz4-decompress.git
