@@ -4,13 +4,23 @@ Converts the FireFox bookmarks to Markdown. Filters are allowed in order to acce
 
 ## Prerequisites
 
-You need to lacate the FireFox bookmarks file, python3 and the python module [mozLz4-decompress](https://github.com/codingepaduli/mozLz4-decompress#mozlz4-decompress) to convert the bookmarks file to JSON.
+Remember to checkout the git submodule ``mozLz4-decompress`` with:
 
-The location of the bookmark files is saved in the Firefox profile, which is saved in ``$HOME/.mozilla/firefox/profiles.ini``. This file specify the FireFox profile folder in the item ``Profile0 Path``. In the following, the profile folder will be referenced as ``$FF_PROFILE_ID``.
+```bash
+git submodule update --init --recursive
+```
 
-The Firefox bookmarks is saved in the file ``$HOME/.mozilla/firefox/$FF_PROFILE_ID.default[-esr]/bookmarkbackups/bookmarks-xyz...abc.jsonlz4``.
+You also need ``crudini`` for loading the location of the bookmark files, please install it with:
 
-Once located the FireFox bookmarks file, run the python module [mozLz4-decompress](https://github.com/codingepaduli/mozLz4-decompress#mozlz4-decompress) to convert them from jsonlz4 to JSON;
+```bash
+apt install crudini
+```
+
+And you need python3, check it is installed with:
+
+```bash
+python3 --version
+```
 
 ## Usage
 
@@ -33,11 +43,11 @@ Note: You can get the bash script ``script.sh`` to run the prerequisite steps an
 E.g. Let's have the following bookmark structure:
 
 - menu
-    - Scienze
-        - Math
-            - link1
-            - link2
-            - link3
+  - Scienze
+    - Math
+      - link1
+      - link2
+      - link3
 
 To convert the links, you nedd to pass all the parents as the following:
 
@@ -50,6 +60,16 @@ To skip the conversion of links, you can select the parent category, as the foll
 ```bash
 python3 exportToMarkdown.py bookmarks.json  --denied 'Math'
 ```
+
+## Customization
+
+The script ``script.sh`` allow you to convert the bookmarks file to a Markdown file.
+
+The first step of this script is the location of the bookmark files, referenced as ``$FF_PROFILE_ID``. The path is saved in the Firefox profile, which is saved in ``$HOME/.mozilla/firefox/profiles.ini``. The ``crudini`` tool let the reading of this file.
+
+Once located the FireFox bookmark file, saved in the file ``$HOME/.mozilla/firefox/$FF_PROFILE_ID.default[-esr]/bookmarkbackups/bookmarks-xyz...abc.jsonlz4``, the python module [mozLz4-decompress](https://github.com/codingepaduli/mozLz4-decompress#mozlz4-decompress) is used to convert it from jsonlz4 to JSON;
+
+Last step, the script will convert the JSON file in Markdown, running the python module ``exportToMarkdown.py``.
 
 ## License
 
