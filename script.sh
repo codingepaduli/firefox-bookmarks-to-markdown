@@ -20,8 +20,14 @@ outputFolder="$currentDir/output"
 # Create the output folder if not exists
 mkdir -p "$outputFolder"
 
-# decompress and pretty print the bookmarks.json
+# decompress the bookmarks.json
 python3 "$currentDir/mozLz4-decompress/mozlz4.py" -d "$firefoxBackupFolder/$lastUpdatedFile" "$outputFolder/bookmarks.json"
+
+# Debugging (optional step): pretty print the json file
+python3 -m json.tool "$outputFolder/bookmarks.json" > "$outputFolder/bookmarksFormatted.json"
+
+# Debugging (optional step): Convert the bookmarks.json in bookmarks.md (pretty print in Markdown)
 python3 "$currentDir/exportToMarkdown.py" "$outputFolder/bookmarks.json" > "$outputFolder/bookmarks.md"
 
-#python3 -m json.tool "$outputFolder/bookmarksRaw.json" > "$outputFolder/bookmarks.json"
+#### Start coping from here
+
